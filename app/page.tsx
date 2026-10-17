@@ -71,7 +71,7 @@ export default function SparkAmongUsLanding() {
     if (!formData.crewName || !formData.scholarNo) return;
 
     try {
-      await fetch("https://formsubmit.co/ajax/hello@slopemaps.in", {
+      await fetch("https://formsubmit.co/ajax/slopemaps.in@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
