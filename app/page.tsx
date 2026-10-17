@@ -66,11 +66,32 @@ export default function SparkAmongUsLanding() {
     });
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+    const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.crewName || !formData.scholarNo) return;
+
+    try {
+      await fetch("https://formsubmit.co/ajax/hello@slopemaps.in", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Crewmate_Name: formData.crewName,
+          Scholar_Number: formData.scholarNo,
+          Discord_ID: formData.discordTag,
+          Preferred_Map: formData.preferredMap,
+          Selected_Suit: selectedColor.name,
+        }),
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+    }
+
     setSubmitted(true);
   };
+
 
   return (
     <div className="min-h-screen bg-[#090B10] text-white relative">
